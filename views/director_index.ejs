@@ -1,0 +1,139 @@
+<% include partials/header.ejs %>
+<h3> Actor Table </h3>
+    <div class="table-wrapper">
+        <% if (actor.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Birth Date</th>
+                        <th scope="col">Award(s)</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% actor.forEach((actor, index) => { %>
+                        <tr>
+                            <th scope="row"><%= actor.id %></th>
+                            <td><%= actor.name %></td>
+                            <td><%= actor.birth.toLocaleDateString() %></td>
+                            <td><%= actor.award %></td>
+                            <td>
+                                <a href="/edit/<%= actor.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= actor.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No actors found. Go <a href="/addActor" >here</a> to add actors.</p>
+        <% } %>
+    </div>
+</div>
+
+<h3> Director Table </h3>
+    <div class="table-wrapper">
+        <% if (director.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Birth Date</th>
+                        <th scope="col">Award(s)</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% director.forEach((director, index) => { %>
+                        <tr>
+                            <th scope="row"><%= director.id %></th>
+                            <td><%= director.name %></td>
+                            <td><%= director.birth.toLocaleDateString() %></td>
+                            <td><%= director.award %></td>
+                            <td>
+                                <a href="/edit/<%= director.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= director.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No directors found. Go <a href="/addDirector" >here</a> to add directors.</p>
+        <% } %>
+    </div>
+</div>
+
+<h3> Producer Table </h3>
+    <div class="table-wrapper">
+        <% if (actor.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Birth Date</th>
+                        <th scope="col">Award(s)</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% actor.forEach((actor, index) => { %>
+                        <tr>
+                            <th scope="row"><%= actor.id %></th>
+                            <td><%= actor.name %></td>
+                            <td><%= actor.birth.toLocaleDateString() %></td>
+                            <td><%= actor.award %></td>
+                            <td>
+                            <td>
+                                <a href="/edit/<%= actor.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= actor.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No actors found. Go <a href="/add" >here</a> to add actors.</p>
+        <% } %>
+    </div>
+	
+<h3> Distributor Table </h3>
+    <div class="table-wrapper">
+        <% if (actor.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Birth Date</th>
+                        <th scope="col">Award(s)</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% actor.forEach((actor, index) => { %>
+                        <tr>
+                            <th scope="row"><%= actor.id %></th>
+                            <td><%= actor.name %></td>
+                            <td><%= actor.birth.toLocaleDateString() %></td>
+                            <td><%= actor.award %></td>
+                            <td>
+                            <td>
+                                <a href="/edit/<%= actor.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= actor.id %>" class="btn btn-sm btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No actors found. Go <a href="/add" >here</a> to add actors.</p>
+        <% } %>
+    </div>	
+</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<% include partials/header.ejs %>
+    <div class="table-wrapper">
+        <div class="container-fluid">
+                <form action="/search"  class="form-inline my-4 justify-content-end" method="post">
+                <select name="rating" id="rating" class="custom-select mr-2" onchange="this.form.submit();">
+                  <option value="Rating" selected>Rating</option>
+                  <% if (ratingOptions.length > 0) {%>
+                    <% ratingOptions.forEach(function(rate) {%>
+                      <option <% if(searchRating==rate["rating"]) { %> selected <%}%> value="<%= rate["rating"] %>"><%= rate["rating"] %></option>
+                    <% }); %>
+                   <% } else { %>
+                        <option value="null">null</option>
+                    <% } %> 
+                </select>    
+                <select name="genre" id="genre" class="custom-select mr-2" onchange="this.form.submit();">
+                  <option value="Genre" selected>Genre</option>
+                  <% if (genreOptions.length > 0) {%>
+                    <% genreOptions.forEach(function(genre) {%>
+                      <option <% if(searchGenre==genre["genre"]) { %> selected <%}%> value="<%= genre["genre"] %>"><%= genre["genre"] %></option>
+                    <% }); %>
+                   <% } else { %>
+                        <option value="null">null</option>
+                    <% } %>
+                </select>
+                  <input name="searchbox" id="searchbox" class="form-control mr-sm-2" type="search" placeholder="Search" value="<%= searchvalue%>">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            <div class="row">
+                <div class="col">
+                    <% if (movies.length > 0) {%>
+                        <table class="table table-hovered table-bordered table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Rating</th>
+                                    <th scope="col">Release Date</th>
+                                    <th scope="col">Duration</th>
+                                    <th scope="col">Genre</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% movies.forEach((movie, index) => { %>
+                                    <tr>
+                                        <th scope="row"><%= movie.id %></th>
+                                        <td><%= movie.name %></td>
+                                        <td><%= movie.rating %></td>
+                                        <td><%= movie.released.toISOString().substring(0, 10) %></td>
+                                        <td><%= movie.duration %></td>
+                                        <td><%= movie.genre %></td>
+                                        <td>
+                                            <a href="/editMovie/<%= movie.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                            <a href="/deleteMovie/<%= movie.id %>" class="btn btn-sm btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    <% } else { %>
+                        <p class="text-center">No movies found!</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

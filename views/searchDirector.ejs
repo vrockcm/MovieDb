@@ -1,0 +1,60 @@
+<% include partials/header.ejs %>
+    <div class="table-wrapper">
+        <div class="container-fluid">
+                <form action="/searchDirector"  class="form-inline my-4 justify-content-end" method="post">
+                <select name="producer" id="producer" class="custom-select mr-2";>
+                        <option>Producer</option>
+						<% producerOptions.forEach((producer, index) => { %>
+							<option <% if(searchProducer==producer["producer"]) { %> selected <%}%> value="<%= producer.id %>">id: <%= producer.id %> name: <%= producer.name %></option>
+						<% }) %>
+                </select>    
+                <select name="director" id="director" class="custom-select mr-2" onchange="this.form.submit();">
+                        <option>Director</option>
+						<% directorOptions.forEach((director, index) => { %>
+							<option <% if(searchProducer==director["director"]) { %> selected <%}%> value="<%= director.id %>">id: <%= director.id %> name: <%= director.name %></option>
+						<% }) %>
+                </select>
+                  <input name="searchbox" id="searchbox" class="form-control mr-sm-2" type="search" placeholder="Search" value="<%= searchvalue%>">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            <div class="row">
+                <div class="col">
+                    <% if (movies.length > 0) {%>
+                        <table class="table table-hovered table-bordered table-striped">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Rating</th>
+                                    <th scope="col">Producer</th>
+                                    <th scope="col">Director</th>
+                                    <th scope="col">Genre</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% movies.forEach((movie, index) => { %>
+                                    <tr>
+                                        <th scope="row"><%= movie.id %></th>
+                                        <td><%= movie.name %></td>
+                                        <td><%= movie.rating %></td>
+                                        <td><%= movie.producer %></td>
+                                        <td><%= movie.director %></td>
+                                        <td><%= movie.genre %></td>
+                                        <td>
+                                            <a href="/editMovie/<%= movie.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                            <a href="/deleteMovie/<%= movie.id %>" class="btn btn-sm btn-danger">Delete</a>
+                                        </td>
+                                    </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    <% } else { %>
+                        <p class="text-center">No movies found!</p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
